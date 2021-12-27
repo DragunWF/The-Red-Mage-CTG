@@ -1,4 +1,4 @@
-**The Red Mage: Catch the Gifts**
+# The Red Mage: Catch the Gifts
 
 **Description:**
 - This was made 2 years ago and that was back when I barely knew how to code/program at
