@@ -1,0 +1,209 @@
+[gd_scene load_steps=36 format=2]
+
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://User Interface/GameOver.tscn" type="PackedScene" id=2]
+[ext_resource path="res://User Interface/PixelText.tres" type="Theme" id=3]
+[ext_resource path="res://Audio/zap1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Audio/sfx_lose.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Audio/Damage.wav" type="AudioStream" id=6]
+[ext_resource path="res://Audio/Fireball.wav" type="AudioStream" id=7]
+[ext_resource path="res://Audio/Jump.wav" type="AudioStream" id=8]
+[ext_resource path="res://Audio/Grab Item (High Tone).wav" type="AudioStream" id=9]
+[ext_resource path="res://Audio/laser3.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Audio/handleSmallLeather.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Player/walk 1.png" type="Texture" id=12]
+[ext_resource path="res://Player/walk 2.png" type="Texture" id=13]
+[ext_resource path="res://Player/walk 3.png" type="Texture" id=14]
+[ext_resource path="res://Player/walk 4.png" type="Texture" id=15]
+[ext_resource path="res://Player/walk 5.png" type="Texture" id=16]
+[ext_resource path="res://Player/Red Mage.png" type="Texture" id=17]
+[ext_resource path="res://Player/Idle.png" type="Texture" id=18]
+[ext_resource path="res://Player/Damage.png" type="Texture" id=19]
+[ext_resource path="res://Player/Jump 1.png" type="Texture" id=20]
+[ext_resource path="res://Player/Jump 2.png" type="Texture" id=21]
+[ext_resource path="res://Player/Jump Damage.png" type="Texture" id=22]
+[ext_resource path="res://Player/BlueMage/Walk 1.png" type="Texture" id=23]
+[ext_resource path="res://Player/BlueMage/Walk 2.png" type="Texture" id=24]
+[ext_resource path="res://Player/BlueMage/Walk 3.png" type="Texture" id=25]
+[ext_resource path="res://Player/BlueMage/Walk 4.png" type="Texture" id=26]
+[ext_resource path="res://Player/BlueMage/Walk 5.png" type="Texture" id=27]
+[ext_resource path="res://Player/BlueMage/Walk 6.png" type="Texture" id=28]
+[ext_resource path="res://Player/BlueMage/Idle 1.png" type="Texture" id=29]
+[ext_resource path="res://Player/BlueMage/Idle 2.png" type="Texture" id=30]
+[ext_resource path="res://Player/BlueMage/Jump 1.png" type="Texture" id=31]
+[ext_resource path="res://Player/BlueMage/Jump 2.png" type="Texture" id=32]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "Damage",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "JumpDamage",
+"speed": 15.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 23 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "Damage",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "JumpDamage",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 12, 16 )
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 6
+
+[node name="GameOver" parent="CanvasLayer2" instance=ExtResource( 2 )]
+editor/display_folded = false
+mouse_filter = 0
+
+[node name="Retry" parent="CanvasLayer2/GameOver/CenterContainer/VBoxContainer" index="1"]
+mouse_filter = 0
+
+[node name="Return" parent="CanvasLayer2/GameOver/CenterContainer/VBoxContainer" index="2"]
+mouse_filter = 0
+
+[node name="Quit" parent="CanvasLayer2/GameOver/CenterContainer/VBoxContainer" index="3"]
+mouse_filter = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Score Bar" type="Control" parent="CanvasLayer"]
+modulate = Color( 0.00784314, 0.992157, 0.368627, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Score Bar"]
+margin_top = 48.0
+margin_right = 112.0
+margin_bottom = 64.0
+
+[node name="Score" type="CenterContainer" parent="CanvasLayer/Score Bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_right = -288.0
+margin_bottom = -192.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Score Bar/Score"]
+margin_left = 31.0
+margin_top = 2.0
+margin_right = 81.0
+margin_bottom = 14.0
+text = "Score Bar"
+align = 1
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+
+[node name="LoseSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Low Volume"
+
+[node name="FireballSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "Lower Volume"
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Ambient"
+
+[node name="BlastSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="SwitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="InvincibilityTime" type="Timer" parent="."]
+
+[node name="FireballCooldown" type="Timer" parent="."]
+
+[node name="EnergyBlastCooldown" type="Timer" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Idle"
+frame = 1
+playing = true
+
+[node name="BlueMageSprite" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 2 )
+animation = "Idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 3 )
+
+[node name="PositionRight" type="Position2D" parent="."]
+position = Vector2( 23, 0 )
+
+[node name="PositionLeft" type="Position2D" parent="."]
+position = Vector2( -23, 0 )
+[connection signal="pressed" from="CanvasLayer2/GameOver/CenterContainer/VBoxContainer/Retry" to="." method="_on_Retry_pressed"]
+[connection signal="pressed" from="CanvasLayer2/GameOver/CenterContainer/VBoxContainer/Return" to="." method="_on_Return_pressed"]
+[connection signal="pressed" from="CanvasLayer2/GameOver/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="timeout" from="InvincibilityTime" to="." method="_on_InvincibilityTime_timeout"]
+[connection signal="timeout" from="FireballCooldown" to="." method="_on_FireballCooldown_timeout"]
+[connection signal="timeout" from="EnergyBlastCooldown" to="." method="_on_EnergyBlastCooldown_timeout"]
+
+[editable path="CanvasLayer2/GameOver"]
