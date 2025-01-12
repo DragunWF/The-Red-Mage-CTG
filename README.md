@@ -13,6 +13,8 @@ This project is complete.
 - [Itch.io | DragunWF](https://dragunwf.itch.io/)
 - [Link to the Game](https://dragonwf.itch.io/the-red-mage-catch-the-gifts)
 - [Link to the Browser Version](https://www.newgrounds.com/portal/view/826037)
+  - This one was uploaded at my old Newgrounds account.
+  - Here is a link to my new [Newsgrounds account](https://dragunwf.newgrounds.com/). The one I use currently.
 
 ### Attributions:
 
